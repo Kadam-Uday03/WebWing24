@@ -12,29 +12,41 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Inter",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Inter", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #273d4e; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ff4a17; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #444444;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #273d4e;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #ff4a17;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #e5eaee;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ff4a17; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ff4a17; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #e5eaee;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #ff4a17;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #444444;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #ff4a17;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -860,6 +872,8 @@ section,
   section,
   .section {
     scroll-margin-top: 76px;
+    padding: 40px 0;
+    /* Reduced padding on mobile */
   }
 }
 
@@ -1180,7 +1194,7 @@ section,
 
 @media (max-width: 640px) {
   .clients .client-logo img {
-    padding: 20px;
+    padding: 10px;
   }
 }
 
@@ -1189,6 +1203,12 @@ section,
 --------------------------------------------------------------*/
 .features .nav-tabs {
   border: 0;
+  display: flex !important;
+  flex-direction: row;
+}
+
+.features .nav-item {
+  width: 16.666%;
 }
 
 .features .nav-link {
@@ -1199,21 +1219,24 @@ section,
   transition: 0.3s;
   border-radius: 0;
   display: flex;
+  flex-direction: row;
+  /* Default desktop style */
   align-items: center;
   justify-content: center;
   cursor: pointer;
   height: 100%;
 }
 
+.features .nav-link h4 {
+  font-size: 16px;
+  /* Adjusted desktop font size */
+  font-weight: 600;
+  margin: 0;
+}
+
 .features .nav-link i {
   padding-right: 15px;
   font-size: 48px;
-}
-
-.features .nav-link h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
 }
 
 .features .nav-link:hover {
@@ -1445,34 +1468,43 @@ section,
 --------------------------------------------------------------*/
 .portfolio .portfolio-filters {
   padding: 0;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 40px auto;
   list-style: none;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .portfolio .portfolio-filters li {
   cursor: pointer;
   display: inline-block;
-  padding: 0;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 10px;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 600;
   line-height: 1;
-  margin-bottom: 5px;
-  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  color: var(--heading-color);
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--heading-color), transparent 85%);
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.portfolio .portfolio-filters li:hover,
-.portfolio .portfolio-filters li.filter-active {
+.portfolio .portfolio-filters li:hover {
   color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio .portfolio-filters li:first-child {
-  margin-left: 0;
-}
-
-.portfolio .portfolio-filters li:last-child {
-  margin-right: 0;
+.portfolio .portfolio-filters li.filter-active {
+  color: #fff;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px -5px color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
 @media (max-width: 575px) {
@@ -1485,10 +1517,22 @@ section,
 .portfolio .portfolio-content {
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio .portfolio-content img {
-  transition: 0.3s;
+.portfolio .portfolio-content img,
+.portfolio .portfolio-content video {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: 0.5s;
+  display: block;
+}
+
+.portfolio .portfolio-content:hover img,
+.portfolio .portfolio-content:hover video {
+  transform: scale(1.1);
 }
 
 .portfolio .portfolio-content .portfolio-info {
@@ -1562,6 +1606,13 @@ section,
 .team .member .pic {
   overflow: hidden;
   margin-bottom: 50px;
+}
+
+.team .member .pic img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .team .member .member-info {
@@ -1841,6 +1892,144 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+/*--------------------------------------------------------------
+# Mobile Responsive Enhancements (Creative Spark)
+--------------------------------------------------------------*/
+@media (max-width: 991px) {
+  .header .cta-btn {
+    font-size: 11px;
+    padding: 5px 12px;
+    margin-right: 10px;
+  }
+
+  .header .logo h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero .d-flex.mt-4 {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero .btn-watch-video {
+    margin-left: 0;
+  }
+
+  /* Features Tabs Mobile Fix */
+  .features .nav-tabs {
+    flex-wrap: wrap;
+    border: none !important;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .features .nav-item {
+    padding: 0;
+    margin: 0;
+    /* We'll handle width here instead of relying on col classes */
+    width: calc(33.333% - 10px);
+  }
+
+  .features .nav-link {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 10px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .features .nav-link i {
+    font-size: 32px !important;
+    padding-right: 0 !important;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .features .nav-link h4 {
+    display: block !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .section-title p {
+    font-size: 22px;
+  }
+
+  .portfolio .portfolio-content video,
+  .portfolio .portfolio-content img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 575px) {
+  .features .nav-item {
+    width: calc(50% - 10px);
+  }
+
+  .portfolio .portfolio-filters li {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+
+  .contact .info-item {
+    padding: 20px 10px;
+  }
+
+  .footer .footer-top {
+    text-align: center;
+  }
+
+  .footer .social-links {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+  .portfolio .portfolio-info {
+    opacity: 1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .portfolio .portfolio-info h4 {
+    transform: none;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .portfolio .portfolio-info p {
+    position: static;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #eee;
+  }
+
+  .portfolio .portfolio-info .preview-link {
+    position: static;
+    align-self: flex-end;
+    margin-bottom: 5px;
+  }
 }
