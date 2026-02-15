@@ -20,6 +20,14 @@
     content="Expert digital solutions including custom web development, mobile app development, UI/UX design, and video editing.">
   <meta property="og:image" content="https://webwing24.com/assets/img/og-image.jpg">
 
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("b8gILOsE3AUCk2gCm");
+    })();
+  </script>
+
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://webwing24.com/">
@@ -944,8 +952,7 @@
             </div>
 
             <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                data-aos-delay="500">
+              <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
                 <div class="row gy-4">
 
                   <div class="col-md-6">
@@ -1075,6 +1082,36 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script type="text/javascript">
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const btn = this.querySelector('button[type="submit"]');
+      const loading = this.querySelector('.loading');
+      const errorMsg = this.querySelector('.error-message');
+      const sentMsg = this.querySelector('.sent-message');
+
+      loading.classList.add('d-block');
+      errorMsg.classList.remove('d-block');
+      sentMsg.classList.remove('d-block');
+      btn.disabled = true;
+
+      emailjs.sendForm('service_iyy95cy', 'template_zwjokdf', this)
+        .then(function () {
+          loading.classList.remove('d-block');
+          sentMsg.classList.add('d-block');
+          btn.disabled = false;
+          event.target.reset();
+        }, function (error) {
+          loading.classList.remove('d-block');
+          errorMsg.innerHTML = 'Something went wrong. Please try again later.';
+          errorMsg.classList.add('d-block');
+          btn.disabled = false;
+          console.log('FAILED...', error);
+        });
+    });
+  </script>
 
 </body>
 
