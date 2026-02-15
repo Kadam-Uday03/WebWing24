@@ -20,6 +20,7 @@ The goal of this website is to present our company online, build trust with pote
 * HTML
 * CSS
 * JavaScript
+* php
 
 ## 🚀 Usage
 
